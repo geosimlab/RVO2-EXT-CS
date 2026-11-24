@@ -30,6 +30,13 @@
  * <http://gamma.cs.unc.edu/RVO2/>
  */
 
+
+/*
+ * Modified for microscopic simulation of
+ * e-scooter and pedestrian interactions (FOV, responsibility weighting,
+ * kinodynamic limits, backward-motion constraint).
+ */
+
 using System;
 using System.Collections.Generic;
 using UnityEngine;

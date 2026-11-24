@@ -29,6 +29,13 @@
  *
  * <http://gamma.cs.unc.edu/RVO2/>
  */
+ 
+
+ /*
+ * Modified for microscopic simulation of
+ * e-scooter and pedestrian interactions (FOV, responsibility weighting,
+ * kinodynamic limits, backward-motion constraint).
+ */
 
 using System;
 using System.Collections.Generic;
@@ -491,20 +498,17 @@ namespace RVO
          * <param name="neighborNo">The number of the obstacle neighbor to be
          * retrieved.</param>
          */
-
-        //
-        // my add
-        //
+        
         public float getAgentClosestObstacleDistSq(int agentNo)
         {
             var obstList = agents_[agentNo2indexDict_[agentNo]].obstacleNeighbors_;
             if (obstList.Count == 0) return float.MaxValue;
-            return obstList[0].Key; // Квадрат расстояния до ближайшего бордюра!
+            return obstList[0].Key; 
         }
         
         public void setAgentDynamics(int agentNo, float acceleration, float deceleration)
         {
-            // ИСПОЛЬЗУЕМ СЛОВАРЬ agentNo2indexDict_ ДЛЯ ПОИСКА ИНДЕКСА
+            
             int index = agentNo2indexDict_[agentNo];
             agents_[index].acceleration_ = acceleration;
             agents_[index].deceleration_ = deceleration;
@@ -515,10 +519,7 @@ namespace RVO
             int index = agentNo2indexDict_[agentNo];
             agents_[index].noBackwardConstraint_ = enableConstraint;
         }
-        //
-        // my add
-        //
-
+        
 
         public int getAgentObstacleNeighbor(int agentNo, int neighborNo)
         {
@@ -842,15 +843,13 @@ namespace RVO
 
                 var agent = agents_[agentNo2indexDict_[agentNo]];
                 agent.cosHalfFov_ = cosHalfFov;
-
-                // Если угол полный (>=180°), конус не нужен
+                
                 if (cosHalfFov <= 0f)
                 {
                     agent.backOffset_ = 0f;
                     return;
                 }
-
-                // tan(α) — готовая функция
+                
                 float tanHalfFov = MathF.Tan(halfAngle);
 
                 // d = R / tan(α)

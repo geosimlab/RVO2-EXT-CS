@@ -1,0 +1,7 @@
+# Игнорировать всё, кроме .cs файлов, самого .gitignore и README/LICENSE при необходимости
+*
+!*/
+!*.cs
+!.gitignore
+!README.md
+!LICENSE

@@ -1,6 +1,6 @@
 # RVO2-EXT-CS
 
-An extended C# implementation of the **RVO2** (Optimal Reciprocal Collision Avoidance) library for Unity, developed for microscopic simulation of pedestrian and e-scooter interactions.
+An extended C# implementation of the **RVO2** (Optimal Reciprocal Collision Avoidance) library for microscopic simulation of pedestrian and e-scooter interactions.
 
 This codebase is based on the original C# port [snape/RVO2-CS](https://github.com/snape/RVO2-CS) (UNC Chapel Hill).
 
